@@ -1,0 +1,52 @@
+# =========================
+# .NET build output
+# =========================
+**/bin/
+**/obj/
+**/out/
+**/[Dd]ebug*/
+**/[Rr]elease*/
+**/TestResults/
+
+# publish / artifacts
+**/publish/
+**/artifacts/
+
+# =========================
+# Rider / JetBrains
+# =========================
+.idea/
+*.sln.iml
+*.DotSettings.user
+*.DotSettings
+.idea_modules/
+
+# =========================
+# Visual Studio / MSBuild user-specific
+# =========================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# =========================
+# Logs / temp files
+# =========================
+*.log
+*.tmp
+*.temp
+
+# =========================
+# OS cruft
+# =========================
+.DS_Store
+Thumbs.db

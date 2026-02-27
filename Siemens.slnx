@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CoffeeMachine/CoffeeMachine.csproj" />
+  <Project Path="SieMarket/SieMarket.csproj" />
+</Solution>
