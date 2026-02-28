@@ -1,5 +1,8 @@
-![CoffeeShop_light_mode drawio](https://github.com/user-attachments/assets/5d7c74c6-3290-4ef2-b7a1-b4eea84e4ea4)
-![Coffee_Shop_Chain_ERD](https://github.com/user-attachments/assets/c12d04c8-a9ff-42f4-a4ef-2fd6c72888bc)
+![Coffee_Shop_Chain_CD](https://github.com/user-attachments/assets/3bd30e6c-8224-44f6-a4d8-ebd8f0dbaa8a)
+
+
+![Coffee_Shop_Chain_ERD](https://github.com/user-attachments/assets/f3ccf664-9498-4002-9670-d15a447fa6ab)
+
 
 # Coffee Shop Chain – Design Documentation
 
@@ -35,8 +38,8 @@
 | Relationship | Multiplicity | Why aggregation |
 |---|---|---|
 | Chain → Shop | 1 to 1..* | A shop is a real-world location; it doesn't cease to exist conceptually if the chain object is removed |
-| Shop → MenuItem | 1 to 0..* | Menu items define products that could be reused or shared; they aren't structurally part of one shop |
-| Shop → Barista | 1 to 0..* | A barista is a person with independent identity; closing a shop doesn't destroy the employee |
+| Shop → MenuItem | 1 to 1..* | Menu items define products that could be reused or shared; they aren't structurally part of one shop |
+| Shop → Barista | 1 to 1..* | A barista is a person with independent identity; closing a shop doesn't destroy the employee |
 | Shop → Order | 1 to 0..* | Orders are historical records; they should survive even if a shop is removed from the system |
 
 ### Composition (lifecycle-dependent)
@@ -78,7 +81,9 @@ Price changes after an order don't affect historical records.
 
 ---
 
-## Note on Menu Modeling
+## Design Notes
+
+Methods are included only to represent core operations from the story; we avoided additional service classes to keep the model simple for the assignment.
 
 In a production system, we might normalize menu offerings with a `ShopMenuItem` bridge table to support per-shop pricing/availability and avoid duplication. The assignment keeps a shop-owned menu for simplicity.
 
