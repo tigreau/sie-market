@@ -81,3 +81,57 @@ Price changes after an order don't affect historical records.
 ## Note on Menu Modeling
 
 In a production system, we might normalize menu offerings with a `ShopMenuItem` bridge table to support per-shop pricing/availability and avoid duplication. The assignment keeps a shop-owned menu for simplicity.
+
+<br><br><br>
+
+
+# SieMarket Electronics Store - Documentation
+
+An online electronics store order management system built with C#.
+
+## Structure
+
+```
+SieMarket/
+├── model/
+│   ├── Order.cs
+│   └── OrderItem.cs
+├── repository/
+│   └── OrderRepository.cs
+├── service/
+│   └── OrderService.cs
+└── Program.cs
+```
+
+## Features
+
+- **CalculateFinalPrice** — calculates the total price of an order, applying a 10% discount if it exceeds 500€.
+- **GetTopSpendingCustomer** — returns the name of the customer who spent the most across all orders.
+- **GetPopularProducts(topN)** — returns the top N most sold products with their total quantity (defaults to 3).
+
+## Run
+
+```bash
+dotnet run --project SieMarket
+```
+
+## Example Output
+
+```
+=== Final Prices ===
+Order 1 (Alice): 855.89€
+Order 2 (Bob): 254.97€
+Order 3 (Alice): 674.97€
+
+=== Top Spending Customer ===
+Alice
+
+=== Popular Products ===
+USB Cable: 5 sold
+Headset: 3 sold
+Mouse: 2 sold
+Monitor: 2 sold
+Laptop: 1 sold
+```
+
+> Popular products example uses `topN=5`. Default is 3.
