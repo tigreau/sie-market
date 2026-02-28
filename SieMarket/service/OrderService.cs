@@ -5,7 +5,7 @@ namespace SieMarket.service;
 
 public class OrderService
 {
-    private static OrderService _instance;
+    private static OrderService? _instance;
     private OrderRepository _repository;
     
     private const decimal DiscountThreshold = 500m;

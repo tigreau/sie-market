@@ -4,7 +4,7 @@ namespace SieMarket.repository;
 
 public class OrderRepository
 {
-    private static OrderRepository _instance;
+    private static OrderRepository? _instance;
     private List<Order> _orders;
 
     private OrderRepository()
