@@ -26,5 +26,10 @@ public class Program
         order3.Items.Add(new OrderItem("Monitor", 2, 349.99m));
         order3.Items.Add(new OrderItem("USB Cable", 5, 9.99m));
         service.AddOrder(order3);
+        
+        Console.WriteLine("=== Final Prices ===");
+        Console.WriteLine("Order 1 (Alice): " + service.CalculateFinalPrice(order1.Id) + "€");
+        Console.WriteLine("Order 2 (Bob): " + service.CalculateFinalPrice(order2.Id) + "€");
+        Console.WriteLine("Order 3 (Alice): " + service.CalculateFinalPrice(order3.Id) + "€");
     }
 }
