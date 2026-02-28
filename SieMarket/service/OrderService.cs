@@ -49,4 +49,41 @@ public class OrderService
 
         return Math.Round(total, 2, MidpointRounding.AwayFromZero);
     }
+    
+    // Exercise 2.3
+    public string GetTopSpendingCustomer()
+    {
+        List<Order> orders = _repository.GetAllOrders();
+
+        if (orders.Count == 0)
+        {
+            throw new InvalidOperationException("No orders found.");
+        }
+
+        Dictionary<string, decimal> spending = new Dictionary<string, decimal>();
+
+        foreach (var order in orders)
+        {
+            decimal finalPrice = CalculateFinalPrice(order.Id);
+
+            if (spending.ContainsKey(order.CustomerName))
+                spending[order.CustomerName] += finalPrice;
+            else
+                spending[order.CustomerName] = finalPrice;
+        }
+
+        string topCustomer = "";
+        decimal maxSpent = 0;
+
+        foreach (var entry in spending)
+        {
+            if (entry.Value > maxSpent)
+            {
+                maxSpent = entry.Value;
+                topCustomer = entry.Key;
+            }
+        }
+
+        return topCustomer;
+    }
 }

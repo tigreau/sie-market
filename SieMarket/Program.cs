@@ -31,5 +31,8 @@ public class Program
         Console.WriteLine("Order 1 (Alice): " + service.CalculateFinalPrice(order1.Id) + "€");
         Console.WriteLine("Order 2 (Bob): " + service.CalculateFinalPrice(order2.Id) + "€");
         Console.WriteLine("Order 3 (Alice): " + service.CalculateFinalPrice(order3.Id) + "€");
+        
+        Console.WriteLine("\n=== Top Spending Customer ===");
+        Console.WriteLine(service.GetTopSpendingCustomer());
     }
 }
