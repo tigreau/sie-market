@@ -34,5 +34,13 @@ public class Program
         
         Console.WriteLine("\n=== Top Spending Customer ===");
         Console.WriteLine(service.GetTopSpendingCustomer());
+
+        Console.WriteLine("\n=== Popular Products ===");
+        // Return the top 5 most popular products, default is 3
+        List<KeyValuePair<string, int>> popular = service.GetPopularProducts(5);
+        foreach (var product in popular)
+        {
+            Console.WriteLine(product.Key + ": " + product.Value + " sold");
+        }
     }
 }

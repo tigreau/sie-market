@@ -7,7 +7,7 @@ public class OrderService
 {
     private static OrderService? _instance;
     private OrderRepository _repository;
-    
+
     private const decimal DiscountThreshold = 500m;
     private const decimal DiscountMultiplier = 0.9m;
 
@@ -30,7 +30,7 @@ public class OrderService
     {
         _repository.AddOrder(order);
     }
-    
+
     // Exercise 2.2
     public decimal CalculateFinalPrice(int orderId)
     {
@@ -49,7 +49,7 @@ public class OrderService
 
         return Math.Round(total, 2, MidpointRounding.AwayFromZero);
     }
-    
+
     // Exercise 2.3
     public string GetTopSpendingCustomer()
     {
@@ -85,5 +85,32 @@ public class OrderService
         }
 
         return topCustomer;
+    }
+
+    // Exercise 2.4
+    public List<KeyValuePair<string, int>> GetPopularProducts(int topN = 3)
+    {
+        List<Order> orders = _repository.GetAllOrders();
+        Dictionary<string, int> productQuantities = new Dictionary<string, int>();
+
+        foreach (var order in orders)
+        {
+            foreach (var item in order.Items)
+            {
+                if (productQuantities.ContainsKey(item.ProductName))
+                    productQuantities[item.ProductName] += item.Quantity;
+                else
+                    productQuantities[item.ProductName] = item.Quantity;
+            }
+        }
+
+        List<KeyValuePair<string, int>> sorted = new List<KeyValuePair<string, int>>(productQuantities);
+        sorted.Sort((a, b) => b.Value.CompareTo(a.Value));
+
+        // Return only the top N
+        if (sorted.Count > topN)
+            sorted = sorted.GetRange(0, topN);
+
+        return sorted;
     }
 }
